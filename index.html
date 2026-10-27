@@ -1,0 +1,571 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FarmChains | 3D Printed Farm Keychains</title>
+  <meta name="description" content="Detailed 3D-printed farm machinery keychains, designed for tractor and agricultural machinery lovers." />
+
+  <style>
+    :root {
+      --green: #203b2a;
+      --green-light: #36583d;
+      --cream: #f5f2e9;
+      --gold: #d7b66c;
+      --ink: #20251f;
+      --muted: #777b70;
+      --white: #fffefa;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--cream);
+    }
+
+    button, a { font: inherit; }
+    a { text-decoration: none; color: inherit; }
+
+    .announcement {
+      padding: 10px;
+      text-align: center;
+      color: white;
+      background: var(--green);
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 7%;
+      background: var(--white);
+      gap: 20px;
+    }
+
+    .logo {
+      font-weight: 900;
+      font-size: 23px;
+      letter-spacing: 2px;
+      color: var(--green);
+    }
+
+    nav { display: flex; gap: 25px; align-items: center; }
+    nav a { font-size: 14px; }
+
+    .cart-button, .primary-button {
+      border: 0;
+      padding: 13px 19px;
+      border-radius: 5px;
+      background: var(--green);
+      color: white;
+      cursor: pointer;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 510px;
+      background: var(--green);
+      color: white;
+    }
+
+    .hero-copy {
+      padding: 75px 10% 65px 14%;
+      align-self: center;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(40px, 5vw, 68px);
+      line-height: 1.04;
+      letter-spacing: -2px;
+      margin: 20px 0;
+    }
+
+    .hero-copy p {
+      color: #dce3d9;
+      line-height: 1.8;
+      max-width: 410px;
+    }
+
+    .hero .primary-button {
+      background: var(--gold);
+      color: var(--green);
+      margin-top: 20px;
+      font-weight: 700;
+    }
+
+    .hero-image {
+      min-height: 360px;
+      background:
+        linear-gradient(90deg, var(--green), transparent 35%),
+        url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=85")
+        center/cover;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding: 25px 7%;
+      background: #eae8dc;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    .features strong { display: block; margin-bottom: 6px; }
+    .features span { color: var(--muted); }
+
+    section { padding: 75px 7%; }
+
+    .section-heading { margin-bottom: 32px; }
+    .section-heading h2 { font-size: 34px; margin: 10px 0; }
+    .section-heading p { color: var(--muted); line-height: 1.6; }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .product {
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #e8e5da;
+    }
+
+    .product-image {
+      aspect-ratio: 1 / 1;
+      display: grid;
+      place-items: center;
+      background: #e9e7dc;
+      overflow: hidden;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .3s;
+    }
+
+    .product:hover .product-image img { transform: scale(1.04); }
+
+    .placeholder {
+      padding: 20px;
+      text-align: center;
+      color: var(--green);
+      line-height: 1.6;
+    }
+
+    .product-info { padding: 20px; }
+    .product-info h3 { margin: 0 0 8px; font-size: 18px; }
+    .product-info p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+      min-height: 42px;
+    }
+
+    .product-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .price { font-size: 20px; font-weight: 800; }
+
+    .add-button {
+      border: 1px solid var(--green);
+      background: transparent;
+      color: var(--green);
+      padding: 10px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .add-button:hover {
+      color: white;
+      background: var(--green);
+    }
+
+    .story {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+      background: #e9e7dc;
+    }
+
+    .story h2 { font-size: 36px; line-height: 1.15; }
+    .story p { color: #5e6258; line-height: 1.9; }
+
+    .story-card {
+      padding: 40px;
+      background: var(--green);
+      color: white;
+      border-radius: 8px;
+    }
+
+    .story-card p { color: #e0e5da; }
+
+    .contact {
+      text-align: center;
+      background: var(--white);
+    }
+
+    .contact p { color: var(--muted); line-height: 1.7; }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 30px 7%;
+      background: #172a1e;
+      color: #e0e5da;
+      font-size: 13px;
+    }
+
+    .cart-panel {
+      position: fixed;
+      z-index: 10;
+      right: 20px;
+      top: 80px;
+      width: min(360px, calc(100vw - 40px));
+      max-height: 75vh;
+      overflow: auto;
+      padding: 24px;
+      background: white;
+      box-shadow: 0 10px 45px #0003;
+      border-radius: 8px;
+      display: none;
+    }
+
+    .cart-panel.open { display: block; }
+    .cart-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid #eee;
+      font-size: 14px;
+    }
+
+    .cart-row button {
+      border: 0;
+      cursor: pointer;
+      background: transparent;
+      color: #a33;
+    }
+
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0;
+      font-weight: 800;
+    }
+
+    .empty { color: var(--muted); font-size: 14px; }
+    .checkout { width: 100%; }
+
+    @media (max-width: 760px) {
+      header { padding: 18px 5%; flex-wrap: wrap; }
+      nav { order: 3; width: 100%; justify-content: space-between; gap: 10px; }
+      nav a { font-size: 12px; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-copy { padding: 60px 7%; }
+      .hero-image { min-height: 280px; }
+      .features { padding: 22px 4%; gap: 10px; font-size: 11px; }
+      section { padding: 55px 5%; }
+      .products { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+      .product-info { padding: 13px; }
+      .product-info h3 { font-size: 15px; }
+      .product-info p { font-size: 12px; }
+      .product-bottom { align-items: flex-start; flex-direction: column; }
+      .add-button { width: 100%; }
+      .story { grid-template-columns: 1fr; gap: 20px; }
+      .story-card { padding: 25px; }
+    }
+
+    @media (max-width: 380px) {
+      .products { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="announcement">
+    MADE WITH PRECISION · INSPIRED BY FARM MACHINERY
+  </div>
+
+  <header>
+    <a class="logo" href="#">FIELDMADE<span style="color:#c6a35a">.</span></a>
+
+    <nav aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#shop">Shop</a>
+      <a href="#story">Our story</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <button class="cart-button" id="cartToggle">
+      Bag (<span id="cartCount">0</span>)
+    </button>
+  </header>
+
+  <div class="cart-panel" id="cartPanel">
+    <h2>Your shopping bag</h2>
+    <div id="cartItems"></div>
+    <div class="cart-total">
+      <span>Total</span>
+      <span id="cartTotal">€0.00</span>
+    </div>
+    <button class="primary-button checkout" id="checkout">
+      Request an order
+    </button>
+    <p class="empty">Demo cart only. Online payment is not yet connected.</p>
+  </div>
+
+  <main>
+    <section class="hero" id="home" style="padding:0">
+      <div class="hero-copy">
+        <span class="eyebrow">For the love of machinery</span>
+        <h1>Small details.<br>Big passion.</h1>
+        <p>
+          Unique 3D-printed keychains inspired by the machines
+          that keep agriculture moving. Designed with care,
+          printed with precision, made for enthusiasts.
+        </p>
+        <a href="#shop">
+          <button class="primary-button">Discover the collection →</button>
+        </a>
+      </div>
+      <div class="hero-image" role="img" aria-label="Agricultural landscape"></div>
+    </section>
+
+    <div class="features">
+      <div><strong>01 · Thoughtful design</strong><span>Every detail matters</span></div>
+      <div><strong>02 · 3D printed</strong><span>Made with care</span></div>
+      <div><strong>03 · Farm inspired</strong><span>For true enthusiasts</span></div>
+    </div>
+
+    <section id="shop">
+      <div class="section-heading">
+        <span class="eyebrow">The collection</span>
+        <h2>Find your favourite machine.</h2>
+        <p>Explore our collection of miniature machinery-inspired keychains.</p>
+      </div>
+
+      <div class="products" id="productGrid"></div>
+    </section>
+
+    <section class="story" id="story">
+      <div>
+        <span class="eyebrow">Made with passion</span>
+        <h2>It's not just a keychain. It's a love for machinery.</h2>
+        <p>
+          Every design begins with an appreciation for agricultural
+          machines and the details that make them special. We turn
+          that passion into miniature pieces you can carry every day.
+        </p>
+        <p>
+          From the shape of the body to the smallest design features,
+          we aim to make every piece something a machinery enthusiast
+          can appreciate.
+        </p>
+      </div>
+      <div class="story-card">
+        <span class="eyebrow">Our philosophy</span>
+        <h2>Details make the difference.</h2>
+        <p>
+          Original designs, careful 3D modelling, and attention to
+          every contour. A little piece of the agricultural world,
+          made to go wherever you do.
+        </p>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <span class="eyebrow">Get in touch</span>
+      <h2>Looking for a particular machine?</h2>
+      <p>Have a question about a design, colour, or custom order?</p>
+      <a class="primary-button" href="mailto:YOUR_EMAIL@example.com">
+        Contact the maker
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <div><strong>FIELDMADE.</strong><br>Designed for machinery lovers.</div>
+    <div>© <span id="year"></span> Fieldmade. All rights reserved.</div>
+  </footer>
+
+  <script>
+    // Replace these example products with your real keychains.
+    // Prices are examples and should be adjusted before publishing.
+    const products = [
+      {
+        id: 1,
+        name: "Classic Tractor",
+        description: "A miniature tractor-inspired keychain.",
+        price: 5.90,
+        image: ""
+      },
+      {
+        id: 2,
+        name: "Harvest Machine",
+        description: "Inspired by the machines of harvest season.",
+        price: 6.90,
+        image: ""
+      },
+      {
+        id: 3,
+        name: "Farm Loader",
+        description: "A detailed design for machinery enthusiasts.",
+        price: 5.90,
+        image: ""
+      }
+    ];
+
+    const cart = [];
+
+    const euro = amount =>
+      new Intl.NumberFormat("en-IE", {
+        style: "currency",
+        currency: "EUR"
+      }).format(amount);
+
+    function renderProducts() {
+      const grid = document.getElementById("productGrid");
+
+      grid.innerHTML = products.map(product => `
+        <article class="product">
+          <div class="product-image">
+            ${
+              product.image
+                ? `<img src="${product.image}" alt="${product.name} keychain">`
+                : `<div class="placeholder">
+                    <div style="font-size:42px">🚜</div>
+                    <strong>Your product photo</strong>
+                    <div>Add your keychain image in the code</div>
+                  </div>`
+            }
+          </div>
+          <div class="product-info">
+            <h3>${product.name}</h3>
+            <p>${product.description}</p>
+            <div class="product-bottom">
+              <span class="price">${euro(product.price)}</span>
+              <button class="add-button" data-add="${product.id}">
+                Add to bag +
+              </button>
+            </div>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function renderCart() {
+      document.getElementById("cartCount").textContent =
+        cart.reduce((sum, item) => sum + item.quantity, 0);
+
+      document.getElementById("cartItems").innerHTML = cart.length
+        ? cart.map(item => `
+            <div class="cart-row">
+              <span>${item.name} × ${item.quantity}</span>
+              <span>
+                ${euro(item.price * item.quantity)}
+                <button data-remove="${item.id}" aria-label="Remove ${item.name}">×</button>
+              </span>
+            </div>
+          `).join("")
+        : '<p class="empty">Your bag is empty.</p>';
+
+      document.getElementById("cartTotal").textContent =
+        euro(cart.reduce((sum, item) =>
+          sum + item.price * item.quantity, 0));
+    }
+
+    document.getElementById("productGrid").addEventListener("click", event => {
+      const button = event.target.closest("[data-add]");
+      if (!button) return;
+
+      const product = products.find(
+        item => item.id === Number(button.dataset.add)
+      );
+      const existing = cart.find(item => item.id === product.id);
+
+      if (existing) existing.quantity++;
+      else cart.push({ ...product, quantity: 1 });
+
+      renderCart();
+      document.getElementById("cartPanel").classList.add("open");
+    });
+
+    document.getElementById("cartItems").addEventListener("click", event => {
+      const button = event.target.closest("[data-remove]");
+      if (!button) return;
+
+      const index = cart.findIndex(
+        item => item.id === Number(button.dataset.remove)
+      );
+
+      if (index !== -1) {
+        cart[index].quantity--;
+        if (cart[index].quantity <= 0) cart.splice(index, 1);
+      }
+
+      renderCart();
+    });
+
+    document.getElementById("cartToggle").addEventListener("click", () => {
+      document.getElementById("cartPanel").classList.toggle("open");
+    });
+
+    document.getElementById("checkout").addEventListener("click", () => {
+      if (!cart.length) {
+        alert("Add a product to your bag first.");
+        return;
+      }
+
+      const order = cart.map(item =>
+        `${item.name} x ${item.quantity} — ${euro(item.price * item.quantity)}`
+      ).join("\n");
+
+      const total = cart.reduce((sum, item) =>
+        sum + item.price * item.quantity, 0);
+
+      const subject = encodeURIComponent("New keychain order enquiry");
+      const body = encodeURIComponent(
+        `Hello! I would like to order:\n\n${order}\n\nTotal: ${euro(total)}\n\nPlease let me know shipping costs and payment options.`
+      );
+
+      // Replace with your real email address before publishing.
+      window.location.href =
+        `mailto:YOUR_EMAIL@example.com?subject=${subject}&body=${body}`;
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    renderProducts();
+    renderCart();
+  </script>
+</body>
+</html>
